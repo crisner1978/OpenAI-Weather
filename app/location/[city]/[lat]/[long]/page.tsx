@@ -9,7 +9,7 @@ import WeatherQuery from '@/graphql/queries/weather-queries'
 export const revalidate = 1440
 
 
-export async function getWeather(params: any) {
+async function getWeather(params: any) {
   const client = getClient()
   const { data } = await client.query({
     query: WeatherQuery,
