@@ -52,7 +52,7 @@ export default async function WeatherPage({ params: { city, lat, long } }: Props
 
   return (
     <div className='flex min-h-screen flex-col lg:flex-row'>
-      <InfoPanel {...props} />
+      <InfoPanel city={city} lat={lat} long={long} results={results} />
       <WeatherPanel results={results} content={content} />
     </div>
   )
