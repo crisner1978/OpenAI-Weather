@@ -1,7 +1,6 @@
 'use client'
 
 import { GlobeAltIcon } from '@heroicons/react/20/solid'
-import { Card } from '@tremor/react'
 import { City, Country } from 'country-state-city'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'

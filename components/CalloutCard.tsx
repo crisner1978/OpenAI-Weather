@@ -10,6 +10,7 @@ type Props = {
 }
 
 export default function CalloutCard({ message, warning }: Props) {
+  console.log('CalloutCard message', message)
   return (
     <Callout
       className='mt-4'

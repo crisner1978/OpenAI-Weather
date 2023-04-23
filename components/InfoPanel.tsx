@@ -1,3 +1,5 @@
+'use client'
+
 import weatherCodeToString from '@/lib/weatherCodeToString'
 import { Root } from '@/typings'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'

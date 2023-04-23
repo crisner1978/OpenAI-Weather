@@ -10,6 +10,7 @@ type Props = {
 }
 
 export default function Chart({ results, weatherChart }: Props) {
+  console.log('Chart', { results, weatherChart })
   const { title, categories, colors, format, maxValue } = weatherChart
 
   const hourly = results.hourly.time
