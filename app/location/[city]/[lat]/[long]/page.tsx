@@ -1,13 +1,12 @@
 import InfoPanel from '@/components/InfoPanel'
 import WeatherPanel from '@/components/WeatherPanel'
 import cleanData from '@/lib/cleanData'
-import getBasePath from '@/lib/getBasePath'
 import { getClient } from '@/apollo-client'
 import { Root } from '@/typings'
 import WeatherQuery from '@/graphql/queries/weather-queries'
+import BASE_URL from '@/lib/BASE_URL'
 
 export const revalidate = 1440
-
 
 async function getWeather(params: any) {
   const client = getClient()
@@ -23,7 +22,6 @@ async function getWeather(params: any) {
   return data.myQuery as Root
 }
 
-
 type Props = {
   params: {
     city: string
@@ -36,17 +34,15 @@ export default async function WeatherPage({ params: { city, lat, long } }: Props
   const results = await getWeather({ lat, long })
   const dataToSend = cleanData(results, city)
 
-  const res = await fetch(getBasePath() + '/api/weather_summary', {
+  const res = await fetch(BASE_URL + '/api/weather_summary', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ weatherData: dataToSend }),
-  })
-  
-  console.log('await getWeather({ lat, long })', results)
-  const GPTdata = await res.json()
-  const { content } = GPTdata
+  }).then((res) => res.json())
+
+  const { content } = res
 
   const props = { city, lat, long, results }
 
